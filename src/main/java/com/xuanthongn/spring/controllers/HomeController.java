@@ -38,7 +38,7 @@ public class HomeController {
     @Autowired
     ProductService service;
 
-    @RequestMapping(value = "Home")
+    @RequestMapping(value = "/")
     public String index(Model model) {
         List<Product> listProduct = service.getAll();
         model.addAttribute("products", listProduct);
