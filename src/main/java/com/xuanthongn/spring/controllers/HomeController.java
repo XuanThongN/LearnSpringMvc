@@ -93,19 +93,19 @@ public class HomeController {
     @RequestMapping(value = "product/saveProduct", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute("product") Product product, Model model) {
         service.insert(product);
-        return "redirect:/Home";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "product/update/saveUpdateProduct", method = RequestMethod.POST)
     public String saveUpdateProduct(@ModelAttribute("product") Product product, Model model) {
         service.update(product);
-        return "redirect:/Home";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "product/delete/{id}", method = RequestMethod.GET)
     public String deleteProduct(@PathVariable Integer id) {
         service.delete(id);
-        return "redirect:/Home";
+        return "redirect:/";
     }
 
 }
