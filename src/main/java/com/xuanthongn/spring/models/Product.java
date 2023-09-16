@@ -2,14 +2,25 @@ package com.xuanthongn.spring.models;
 
 import org.springframework.context.annotation.Bean;
 
+import javax.persistence.*;
 
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
-    private String name;
-    private double price;
 
-    public Product(){}
-    public Product(int id, String name, double price) {
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "price")
+    private int price;
+
+    public Product() {
+    }
+
+    public Product(int id, String name, int price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -31,11 +42,11 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }

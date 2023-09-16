@@ -5,6 +5,7 @@ import com.xuanthongn.spring.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Random;
@@ -12,26 +13,26 @@ import java.util.Random;
 @Service
 public class ProductService {
     @Autowired
-    ProductRepository repository;
+    private ProductRepository customerRepository;
 
-    public List<Product> getAll() {
-        return repository.getAll();
+    @Transactional
+    public List<Product> getProducts() {
+        return customerRepository.getProducts();
     }
 
-    public Product getById(int id) {
-        return repository.getById(id);
+    @Transactional
+    public void saveProduct(Product theProduct) {
+        customerRepository.saveProduct(theProduct);
     }
 
-    public void insert(Product input) {
-        input.setId(new Random().nextInt(1000));
-        repository.insert(input);
+    @Transactional
+    public Product getProduct(int theId) {
+        return customerRepository.getProduct(theId);
     }
 
-    public void update(Product input) {
-        repository.update(input);
+    @Transactional
+    public void deleteProduct(int theId) {
+        customerRepository.deleteProduct(theId);
     }
 
-    public void delete(int id) {
-        repository.delete(id);
-    }
 }

@@ -11,6 +11,7 @@
  * @author xuant
  * @author xuant
  * @author xuant
+ * @author xuant
  */
 
 /**
@@ -40,7 +41,7 @@ public class HomeController {
 
     @RequestMapping(value = "/")
     public String index(Model model) {
-        List<Product> listProduct = service.getAll();
+        List<Product> listProduct = service.getProducts();
         model.addAttribute("products", listProduct);
         return "index";
     }
@@ -48,7 +49,7 @@ public class HomeController {
 
     @RequestMapping(value = "product/{id}", method = RequestMethod.GET)
     public String details(@PathVariable Integer id, Model model) {
-        Product product = service.getById(id);
+        Product product = service.getProduct(id);
         model.addAttribute("product", product);
         return "details";
     }
@@ -80,7 +81,7 @@ public class HomeController {
 
     @RequestMapping(value = "product/update/{id}", method = RequestMethod.GET)
     public String editProduct(@PathVariable int id, Model model) {
-        Product product = service.getById(id);
+        Product product = service.getProduct(id);
         model.addAttribute("product", product);
         return "update-product";
     }
@@ -92,19 +93,19 @@ public class HomeController {
 
     @RequestMapping(value = "product/saveProduct", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute("product") Product product, Model model) {
-        service.insert(product);
+        service.saveProduct(product);
         return "redirect:/";
     }
 
     @RequestMapping(value = "product/update/saveUpdateProduct", method = RequestMethod.POST)
     public String saveUpdateProduct(@ModelAttribute("product") Product product, Model model) {
-        service.update(product);
+        service.saveProduct(product);
         return "redirect:/";
     }
 
     @RequestMapping(value = "product/delete/{id}", method = RequestMethod.GET)
     public String deleteProduct(@PathVariable Integer id) {
-        service.delete(id);
+        service.deleteProduct(id);
         return "redirect:/";
     }
 
