@@ -30,8 +30,8 @@
                 <td>${product.name}</td>
                 <td>${product.price}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/product/${product.id}" class="btn btn-info btn-sm">View</a>
-                    <a href="${pageContext.request.contextPath}/product/update/${product.id}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="${pageContext.request.contextPath}/product/${product.id}" class="btn btn-info btn-sm text-white">View</a>
+                    <a href="${pageContext.request.contextPath}/product/update/${product.id}" class="btn btn-warning btn-sm text-white">Edit</a>
                     <a href="${pageContext.request.contextPath}/product/delete/${product.id}" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
